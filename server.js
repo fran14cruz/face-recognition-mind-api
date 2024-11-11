@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const knex = require('knex')
 
-const postgres = knex({
+const db = knex({
   client: 'pg',
   connection: {
     host: '127.0.0.1',
@@ -14,8 +14,6 @@ const postgres = knex({
     database: 'recognition-mind',
   },
 });
-
-console.log(postgres.select('*').from('users'));
 
 const app = express();
 
@@ -59,14 +57,17 @@ app.post('/signin', (req, res) => {
 
 app.post('/register', (req, res) => {
   const { name, email } = req.body;
-  database.users.push({
-    id: '123',
-    name: name,
+  db('users')
+    .returning('*')
+    .insert({
     email: email,
-    entries: 0,
+    name: name,
     joined: new Date()
-  });
-  res.json(database.users[database.users.length-1]);
+  })
+    .then(user => {
+      res.json(user[0]);
+    })
+    .catch(err => res.status(400).json('unable to register'));
 })
 
 app.listen(3000, () => {
