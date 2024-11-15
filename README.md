@@ -2,6 +2,8 @@
 
 Face Recognition Mind API is a backend Node.js application built with Express. It serves as the server for a React-based [frontend application face-recognition-mind](https://github.com/fran14cruz/face-recognition-mind), providing routes for user authentication, registration, and face recognition on images. The application utilizes [Clarifai's API](https://www.clarifai.com/) to perform face detection on user-provided images, drawing bounding boxes around detected faces.
 
+Take a look at the deployed version of the application [here](https://face-recognition-mind-d559b50080a7.herokuapp.com).
+
 ---
 
 ## Features
@@ -24,7 +26,7 @@ Face Recognition Mind API is a backend Node.js application built with Express. I
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/face-recognition-mind-api.git
+    git clone https://github.com/fran14cruz/face-recognition-mind-api.git
     cd face-recognition-mind-api
     ```
 
